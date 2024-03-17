@@ -1,0 +1,39 @@
+name: Sync Plugin With WordPress SVN
+
+on:
+  #push:
+  #  branches:
+  #    - master
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '00 12 * * *'
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'Farhad Sakhaei'
+          git config --global user.email 'farhad0@gmail.com'
+
+      - name: Configure Git
+        run: |
+          git checkout master
+
+      - name: Remove unwanted files
+        run: |
+          find . -mindepth 1 -maxdepth 1 ! -name '.github' ! -name '.git' -exec rm -rf {} +
+
+      - name: Get plugin from SVN
+        run: |
+          svn checkout https://plugins.svn.wordpress.org/woo-iran-shetab-card-field/trunk .
+          rm -rf ".svn"
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -am "Sync plugin from SVN"
+          git push origin master
