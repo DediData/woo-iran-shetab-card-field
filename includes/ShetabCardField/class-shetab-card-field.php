@@ -21,42 +21,42 @@ final class Shetab_Card_Field extends \DediData\Singleton {
 	 * 
 	 * @var string $plugin_url
 	 */
-	private $plugin_url;
+	protected $plugin_url;
 
 	/**
 	 * Plugin Folder
 	 * 
 	 * @var string $plugin_folder
 	 */
-	private $plugin_folder;
+	protected $plugin_folder;
 
 	/**
 	 * Plugin Name
 	 * 
 	 * @var string $plugin_name
 	 */
-	private $plugin_name;
+	protected $plugin_name;
 
 	/**
 	 * Plugin Version
 	 * 
 	 * @var string $plugin_version
 	 */
-	private $plugin_version;
+	protected $plugin_version;
 	
 	/**
 	 * Plugin Slug
 	 * 
 	 * @var string $plugin_slug
 	 */
-	private $plugin_slug;
+	protected $plugin_slug;
 
 	/**
 	 * Plugin File
 	 * 
 	 * @var string $plugin_file
 	 */
-	private $plugin_file;
+	protected $plugin_file;
 
 	/**
 	 * Constructor
@@ -111,7 +111,7 @@ final class Shetab_Card_Field extends \DediData\Singleton {
 
 		wp_register_script( $this->plugin_slug, $this->plugin_url . '/assets/public/js/script.js', array(), $this->plugin_version, true );
 		wp_enqueue_script( $this->plugin_slug );
-		*/    
+		*/
 	}
 
 	/**

@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace DediData;
 
 use WP_Error;
- 
+
 /**
  * Class Singleton
  */
